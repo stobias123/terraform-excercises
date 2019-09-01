@@ -4,8 +4,7 @@ projects:
 - name: excercise-09
   dir: ./exercise-09-atlantis
   workspace: default
-  terraform_version: v0.12.1
+  terraform_version: v0.11.13
   autoplan:
     when_modified: ["*.tf", "**/*.tf"]
     enabled: true
-  apply_requirements: [mergeable, approved]
