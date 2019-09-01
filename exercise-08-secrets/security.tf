@@ -1,39 +1,6 @@
-# ---------------------------------------------------------------------------------------------------------------------
-# DEPLOY A SIMPLE WEB SERVER ON A SINGLE EC2 INSTANCE
-# ---------------------------------------------------------------------------------------------------------------------
-
-provider "aws" {
-  region = "${var.aws_region}"
-}
-
 resource "aws_key_pair" "deployer" {
   key_name   = "${var.key_name}"
   public_key = "${var.public_key}"
-}
-
-# ---------------------------------------------------------------------------------------------------------------------
-# CREATE THE EC2 INSTANCE
-# It will run a simple "Hello, World" web server
-# ---------------------------------------------------------------------------------------------------------------------
-
-resource "aws_instance" "web_server" {
-  ami           = "${data.aws_ami.ubuntu.id}"
-  instance_type = "t2.micro"
-
-  key_name               = "${aws_key_pair.deployer.key_name}"
-  vpc_security_group_ids = ["${aws_security_group.web_server.id}"]
-
-  # To keep this example simple, we run a web server as a User Data script. In real-world usage, you would typically
-  # install the web server and its dependencies in the AMI.
-  user_data = <<-EOF
-              #!/bin/bash
-              echo "${var.server_text}" > index.html
-              nohup busybox httpd -f -p "${var.http_port}" &
-              EOF
-
-  tags {
-    Name = "${var.name}"
-  }
 }
 
 # ---------------------------------------------------------------------------------------------------------------------

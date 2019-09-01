@@ -23,7 +23,7 @@ us-east-2
 ```
 ssh-keygen
 ```
-### Configure variables in your `variables.tf`
+
 
 To deploy this module:
 
