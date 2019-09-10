@@ -7,4 +7,10 @@ projects:
   terraform_version: v0.11.13
   autoplan:
     when_modified: ["*.tf", "**/*.tf"]
-    enabled: true
+- name: excercise-10
+  dir: ./exercise-10-diy
+  workspace: default
+  terraform_version: v0.11.13
+  autoplan:
+    when_modified: ["*.tf", "**/*.tf"]
+    enabled: true   enabled: true
