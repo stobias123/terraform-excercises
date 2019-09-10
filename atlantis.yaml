@@ -13,4 +13,4 @@ projects:
   terraform_version: v0.11.13
   autoplan:
     when_modified: ["*.tf", "**/*.tf"]
-    enabled: true
+    enabled: true   enabled: true
